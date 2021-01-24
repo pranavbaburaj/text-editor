@@ -1,0 +1,67 @@
+*{
+    margin : 0;
+    padding : 0;
+}
+
+:root {
+    --f : "Roboto Mono", monospace;
+    --b : #272A2A;
+    --t : rgb(57, 60, 62);
+    --border : rgb(127, 119, 107);
+    --fc : rgb(200, 196, 190);
+}
+
+body {
+    background : var(--b);
+}
+
+h1 {
+    color : var(--fc);
+    font-family: var(--f);
+    text-align: center;
+    margin : 10px 10px 10px 10px;
+}
+
+.container {
+    display : grid;
+    place-items: center;
+    margin : 10px 10px 10px 10px;
+}
+
+.filename {
+    background : var(--t);
+    width : 80%;
+    border : 3px solid var(--border);
+    outline: 0;
+    padding : 5px;
+    font-family: var(--f);
+    font-size: 19.8px;
+    color: var(--fc);
+    margin : 1% 1% 1% 1%;
+}
+
+.code {
+    width : 60rem;
+    height: 80vh;
+    background-color: #2B2B3B;
+    border : none;
+    outline: 0;
+    color : var(--fc);
+    font-size : 17.8px;
+    font-family: var(--f);
+}
+
+.hello {
+    display: flex;
+    width : 80%;
+}
+
+.apply {
+    padding: 5px;
+    height: 40px;
+    margin-top: 7px;
+    background-color : var(--t);
+    border : 3px solid var(--border);
+    color: var(--fc);
+    outline: 0;
+}
