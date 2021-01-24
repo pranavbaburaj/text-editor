@@ -9,18 +9,18 @@ var dataIsSaved = false
 
 // set the default filename
 const setDefaultFileName = (inputBox) => {
-    const file = sessionStorage.getItem('filename')
+    const file = localStorage.getItem('filename')
     if (file == null) {
         inputBox.value = "main.js"
     } else {
-        inputBox.value = sessionStorage.getItem('filename')
+        inputBox.value = localStorage.getItem('filename')
     }
     switchTitle(filename.value)
 }
 
 filename.addEventListener('keydown', function(event) {
     if(event.keyCode == 13){
-        sessionStorage.setItem('filename', filename.value)
+        localStorage.setItem('filename', filename.value)
     }
 
     if(event.keyCode == 32){
@@ -31,7 +31,7 @@ filename.addEventListener('keydown', function(event) {
 })
 
 const updateCodeSnippet = function(textToUpdate) {
-    sessionStorage.setItem('code', textToUpdate)
+    localStorage.setItem('code', textToUpdate)
 }
 
 code.addEventListener('keydown', function(event) {
@@ -51,13 +51,13 @@ window.addEventListener('keydown', function(event) {
 })
 
 apply.addEventListener('click', function(event) {
-    sessionStorage.setItem('filename', filename.value)
+    localStorage.setItem('filename', filename.value)
 })
 
 const setDefaultCodeSnippet = function(textarea) {
-    var lastCode = sessionStorage.getItem('code')
+    var lastCode = localStorage.getItem('code')
     if(lastCode != null) {
-        textarea.value = sessionStorage.getItem('code')
+        textarea.value = localStorage.getItem('code')
     } else {
         textarea.value = ""
     }
