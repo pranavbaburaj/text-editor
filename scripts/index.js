@@ -52,6 +52,7 @@ window.addEventListener('keydown', function(event) {
 
 apply.addEventListener('click', function(event) {
     localStorage.setItem('filename', filename.value)
+    localStorage.setItem('code', code.value)
 })
 
 const setDefaultCodeSnippet = function(textarea) {
