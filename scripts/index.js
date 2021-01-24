@@ -1,4 +1,4 @@
-import switchTitle from "./title.js"
+import switchTitle, {removeSpaces} from "./title.js"
 
 const filename = document.querySelector('.filename')
 
@@ -21,6 +21,11 @@ const setDefaultFileName = (inputBox) => {
 filename.addEventListener('keydown', function(event) {
     if(event.keyCode == 13){
         sessionStorage.setItem('filename', filename.value)
+    }
+
+    if(event.keyCode == 32){
+        // filename.value =filename.value.toString().replace(" ", "")
+        filename.value = removeSpaces(filename.value)
     }
     return null
 })
