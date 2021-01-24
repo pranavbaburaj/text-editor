@@ -1,7 +1,11 @@
+import switchTitle from "./title.js"
+
 const filename = document.querySelector('.filename')
 
 const code = document.querySelector('.code')
 const apply = document.querySelector('.apply')
+
+var dataIsSaved = false
 
 // set the default filename
 const setDefaultFileName = (inputBox) => {
@@ -11,6 +15,7 @@ const setDefaultFileName = (inputBox) => {
     } else {
         inputBox.value = sessionStorage.getItem('filename')
     }
+    switchTitle(filename.value)
 }
 
 filename.addEventListener('keydown', function(event) {
@@ -25,8 +30,19 @@ const updateCodeSnippet = function(textToUpdate) {
 }
 
 code.addEventListener('keydown', function(event) {
-    updateCodeSnippet(code.value)
+    // updateCodeSnippet(code.value)
+    switchTitle(`${filename.value}-[unsaved]`)
+})
 
+window.addEventListener('keydown', function(event) {
+    if(event.ctrlKey && event.keyCode == 83){
+        event.preventDefault()
+        updateCodeSnippet(code.value)
+        switchTitle(
+            `${filename.value}`
+        )
+        dataIsSaved = true
+    }
 })
 
 apply.addEventListener('click', function(event) {
