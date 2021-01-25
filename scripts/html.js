@@ -17,7 +17,7 @@ export default class HTMLBuild {
     runHTMLBuild() {
         if(this.checkForHTML()){
             localStorage.setItem('build', this.code.value)
-            window.location.href = "/v.html"
+            window.location.href = "/v"
             this.content.innerHTML = this.code.value
             this.modal.style.display = "block"
         }
