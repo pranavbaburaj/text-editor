@@ -14,11 +14,18 @@ open the `index.html` file in the browser
 
 ## Key Bindings
 Create an html template : `!`
+<br>
 Save the file : `Ctrl + S`
+<br>
 New file : `Shift + N`
+<br>
 Open in a new window : `Shift + V`
+<br>
 Flip the page : `Ctrl + R`
-Run HTML files : `F5
+<br>
+Run HTML files : `F5`
+<br>
+
 
 ## Features
 
