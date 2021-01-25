@@ -56,15 +56,52 @@ function run(){
     }
 }
 
+function clearAll(){
+    filename.value = ""
+    code.value = ""
+    localStorage.setItem('filename', '')
+    localStorage.setItem('code', '')
+    window.location.href = "/"
+}
+
 /*
 Wait for F5 Keypress
 and on keypress run the HTMLBuild()
 and open up the result on a new page
 */
+var up_and_down = true
+
+function up_and_is_down(c){
+    up_and_down = c
+}
+
 window.addEventListener('keydown', function(event){
     if(event.keyCode == 116){
         event.preventDefault()
         run()
+    } 
+    
+    if(event.shiftKey && event.keyCode == 78){
+        clearAll()
+    }
+
+    if(event.shiftKey && event.keyCode == 86){
+        window.open(
+            window.location.href,
+            "DescriptiveWindowName",
+            "resizable,scrollbars,status"
+        )
+    }
+
+    if(event.ctrlKey && event.keyCode == 82){
+        event.preventDefault()
+        if(up_and_down){
+            up_and_is_down(false)
+            document.body.classList.add('transform')
+        } else {
+            up_and_is_down(true)
+            document.body.classList.remove('transform')
+        }
     }
 })
 
@@ -100,11 +137,11 @@ const updateCodeSnippet = function(textToUpdate) {
 code.addEventListener('keydown', function(event) {
     // updateCodeSnippet(code.value)
     if(event.shiftKey && event.keyCode == 49){
-        var blocks = code.value.toString().split(" ")
+        // var blocks = code.value.toString().split(" ")
         // the boilterplate creation
-        if(blocks.length == 1){
+        // if(blocks.length == 1){
             // check if ! is the first character
-            if(blocks[0] == ""){
+            // if(blocks[0] == ""){
                 // ask to create a template
                 const createTemplate = window.confirm("Do you want to create an html template")
                 if(createTemplate){
@@ -118,13 +155,13 @@ code.addEventListener('keydown', function(event) {
                     // save the updated code 
                     // into the session(LocalStorage)
                     updateCodeSnippet(code.value)
-                } else {
-
                 }
+                // } else {
+
+                // }
             }
-        }
-    }
     switchTitle(`${filename.value}-[unsaved]`)
+        
 })
 
 window.addEventListener('keydown', function(event) {
@@ -153,8 +190,49 @@ const setDefaultCodeSnippet = function(textarea) {
     }
 }
 
+function checkNotificationPromise() {
+    try {
+      Notification.requestPermission().then();
+    } catch(e) {
+      return false;
+    }
+
+    return true;
+  }
+
+// ask for notifications
+function askNotificationPermission() {
+    // function to actually ask the permissions
+    function handlePermission(permission) {
+      // set the button to shown or hidden, depending on what the user answers
+      if(Notification.permission === 'denied' || Notification.permission === 'default') {
+        // notificationBtn.style.display = 'block';
+      } else {
+        // notificationBtn.style.display = 'none';
+      }
+    }
+  
+    // Let's check if the browser supports notifications
+    if (!('Notification' in window)) {
+      console.log("This browser does not support notifications.");
+    } else {
+      if(checkNotificationPromise()) {
+        Notification.requestPermission()
+        .then((permission) => {
+          handlePermission(permission);
+        })
+      } else {
+        Notification.requestPermission(function(permission) {
+          handlePermission(permission);
+        });
+      }
+    }
+  }
+
 setDefaultCodeSnippet(code)
 setDefaultFileName(filename)
 
 // check for html and readme files
 checkForFiles()
+askNotificationPermission()
+
