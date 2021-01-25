@@ -1,17 +1,28 @@
 import switchTitle, {removeSpaces} from "./title.js"
 import checkForFiles from "./files.js"
 import HTMLBuild from "./html.js"
+import create_template from "./template.js"
 
+
+// the filename input box
+// to collect the filename
 export const filename = document.querySelector('.filename')
 
+// the code textarea
 const code = document.querySelector('.code')
+
+// the apply or the save button
 const apply = document.querySelector('.apply')
 
+// the main heading
 export const heading = document.querySelector(".h1")
+
+
 
 var dataIsSaved = false
 
-
+// the modal box to display
+// for html build
 export const modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
@@ -33,6 +44,7 @@ window.onclick = function(event) {
   }
 }
 
+// run the html build
 function run(){
     if(filename.value.endsWith(".html") || filename.value.endsWith(".htm")){
         var html = new HTMLBuild(
@@ -44,12 +56,18 @@ function run(){
     }
 }
 
+/*
+Wait for F5 Keypress
+and on keypress run the HTMLBuild()
+and open up the result on a new page
+*/
 window.addEventListener('keydown', function(event){
     if(event.keyCode == 116){
         event.preventDefault()
         run()
     }
 })
+
 // set the default filename
 const setDefaultFileName = (inputBox) => {
     const file = localStorage.getItem('filename')
@@ -81,6 +99,31 @@ const updateCodeSnippet = function(textToUpdate) {
 
 code.addEventListener('keydown', function(event) {
     // updateCodeSnippet(code.value)
+    if(event.shiftKey && event.keyCode == 49){
+        var blocks = code.value.toString().split(" ")
+        // the boilterplate creation
+        if(blocks.length == 1){
+            // check if ! is the first character
+            if(blocks[0] == ""){
+                // ask to create a template
+                const createTemplate = window.confirm("Do you want to create an html template")
+                if(createTemplate){
+                    // if the response is yes
+                    // prevent the default event(! mark)
+                    // and fill out the html file with 
+                    // the default html template
+                    event.preventDefault()
+                    create_template(code)
+
+                    // save the updated code 
+                    // into the session(LocalStorage)
+                    updateCodeSnippet(code.value)
+                } else {
+
+                }
+            }
+        }
+    }
     switchTitle(`${filename.value}-[unsaved]`)
 })
 
@@ -112,4 +155,6 @@ const setDefaultCodeSnippet = function(textarea) {
 
 setDefaultCodeSnippet(code)
 setDefaultFileName(filename)
+
+// check for html and readme files
 checkForFiles()

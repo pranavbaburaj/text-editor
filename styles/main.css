@@ -102,3 +102,15 @@ h1 {
     text-decoration: none;
     cursor: pointer;
   }
+
+  * {box-sizing: border-box}
+
+/* Set a style for all buttons */
+
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+}
+

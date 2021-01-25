@@ -1,5 +1,8 @@
 import {filename, heading} from "./index.js"
 
+// switch the heading text
+// from [heading] to
+// [heading](Press f5)
 function switchText(text){
     heading.innerHTML = text
 }
@@ -10,7 +13,7 @@ export default function checkForFiles(){
     // readme files
     const file = filename.value // the value of the filename input
     if(file.endsWith(".html") || file.endsWith(".htm")){
-        // readme
+        // find the html template and display html
         if(!heading.innerHTML.includes("(Press F5 to run)")){
             switchText(
                 `${heading.innerHTML}(Press F5 to run)`
