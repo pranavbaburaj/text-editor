@@ -1,3 +1,5 @@
+
+
 export default class HTMLBuild {
     constructor(filename, code, modalBox, content){
         this.file = filename
@@ -14,6 +16,8 @@ export default class HTMLBuild {
 
     runHTMLBuild() {
         if(this.checkForHTML()){
+            localStorage.setItem('build', this.code.value)
+            window.location.href = "/v.html"
             this.content.innerHTML = this.code.value
             this.modal.style.display = "block"
         }
