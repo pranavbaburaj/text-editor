@@ -47,7 +47,10 @@ window.onclick = function(event) {
 // run the html build
 function run(){
     if(filename.value.endsWith(".html") || filename.value.endsWith(".htm")){
-        var html = new HTMLBuild(
+      var n = new Notification(
+        "Starting to build html"
+      )  
+      var html = new HTMLBuild(
             filename,
             code,
             modal,
@@ -57,6 +60,7 @@ function run(){
 }
 
 function clearAll(){
+  var n = new Notification("Clearing all the fields")
     filename.value = ""
     code.value = ""
     localStorage.setItem('filename', '')
@@ -236,3 +240,7 @@ setDefaultFileName(filename)
 checkForFiles()
 askNotificationPermission()
 
+// var computer = new ActiveXObject('WScript.Network');
+var welcomeNotification = new Notification(
+  "Hi, Welcome to Cody"
+)
