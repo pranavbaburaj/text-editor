@@ -59,9 +59,9 @@ function run() {
       modal,
       document.querySelector(".modal-content")
     )
-  } else if(filename.value.endsWith(".eseh")){
+  } else if (filename.value.endsWith(".eseh")) {
     let shScript = new Scripts(code.value)
-    
+
   }
 }
 
@@ -153,7 +153,7 @@ code.addEventListener('keydown', function (event) {
     // check if ! is the first character
     // if(blocks[0] == ""){
     // ask to create a template
-    if(filename.value.endsWith(".html") || filename.value.endsWith(".htm")){
+    if (filename.value.endsWith(".html") || filename.value.endsWith(".htm")) {
       const createTemplate = window.confirm("Do you want to create an html template")
       if (createTemplate) {
         // if the response is yes

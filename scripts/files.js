@@ -30,8 +30,8 @@ export default function checkForFiles() {
             switchText(
                 `${heading.innerHTML}(Press F5 to run)`
             )
-        } 
-    }else {
+        }
+    } else {
         switchText(heading.innerHTML.replace("(Press F5 to run)", ""))
     }
 }

@@ -1,6 +1,6 @@
 // set the current charatcer
-function setCurrentCharacter(code, pos){
-    if(code.length == pos){
+function setCurrentCharacter(code, pos) {
+    if (code.length == pos) {
         return null
     } else {
         return code[pos]
@@ -10,7 +10,7 @@ function setCurrentCharacter(code, pos){
 // the main executor class
 // to execute the eseh code
 export class Execute {
-    constructor(code, lineNumber){
+    constructor(code, lineNumber) {
         // the single line
         // of code splitted by spaces
         // to parse by each word
@@ -25,14 +25,14 @@ export class Execute {
         this.pos = 0
     }
 
-    executeEsEhScript = function() {
+    executeEsEhScript = function () {
         // setting the current character
         let currentCharacter = setCurrentCharacter(
             this.code,
             this.pos
         )
 
-        while (currentCharacter != null){
+        while (currentCharacter != null) {
             console.log(currentCharacter)
             this.pos += 1
 
