@@ -14,7 +14,7 @@ export const template = `
 </html>
 `
 
-export default function create_template(code){
+export default function create_template(code) {
     code.value = template // update the code with the template
     var notify = new Notification("Creating the template")
 }
