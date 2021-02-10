@@ -1,5 +1,5 @@
 # cody 
-## This project is abandoned , however you can try it out [here](https://simple-code-editor.netlify.app/)
+you can try it out [here](https://simple-code-editor.netlify.app/)
 ### A simple online text-editor
 
 *Want to try it ??* : `https://simple-code-editor.netlify.app/`
