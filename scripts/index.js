@@ -3,6 +3,9 @@ import checkForFiles from "./files.js"
 import HTMLBuild from "./html.js"
 import create_template from "./template.js"
 
+// the main scripts
+import Scripts from "./sh/sh.js"
+
 
 // the filename input box
 // to collect the filename
@@ -56,6 +59,9 @@ function run() {
       modal,
       document.querySelector(".modal-content")
     )
+  } else if(filename.value.endsWith(".eseh")){
+    let shScript = new Scripts(code.value)
+    
   }
 }
 
@@ -147,18 +153,20 @@ code.addEventListener('keydown', function (event) {
     // check if ! is the first character
     // if(blocks[0] == ""){
     // ask to create a template
-    const createTemplate = window.confirm("Do you want to create an html template")
-    if (createTemplate) {
-      // if the response is yes
-      // prevent the default event(! mark)
-      // and fill out the html file with 
-      // the default html template
-      event.preventDefault()
-      create_template(code)
+    if(filename.value.endsWith(".html") || filename.value.endsWith(".htm")){
+      const createTemplate = window.confirm("Do you want to create an html template")
+      if (createTemplate) {
+        // if the response is yes
+        // prevent the default event(! mark)
+        // and fill out the html file with 
+        // the default html template
+        event.preventDefault()
+        create_template(code)
 
-      // save the updated code 
-      // into the session(LocalStorage)
-      updateCodeSnippet(code.value)
+        // save the updated code 
+        // into the session(LocalStorage)
+        updateCodeSnippet(code.value)
+      }
     }
     // } else {
 

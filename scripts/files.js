@@ -25,7 +25,13 @@ export default function checkForFiles() {
                 `${heading.innerHTML}(Press F5 to run)`
             )
         }
-    } else {
+    } else if (file.endsWith(".eseh")) {
+        if (!heading.innerHTML.includes("(Press F5 to run)")) {
+            switchText(
+                `${heading.innerHTML}(Press F5 to run)`
+            )
+        } 
+    }else {
         switchText(heading.innerHTML.replace("(Press F5 to run)", ""))
     }
 }
