@@ -1,3 +1,5 @@
+import { Execute } from "./execute/exe.js"
+
 // the main script
 export default class Scripts {
     constructor(code){
@@ -9,7 +11,15 @@ export default class Scripts {
     createLexicalEvaluation = () => {
         for(let index = 0; index < this.data.length; index++){
             let lineNumber = index + 1
-            console.log(this.data[lineNumber - 1])
+
+            // calling the executor
+            const executor = new Execute(
+                this.data[index],
+                lineNumber
+            )
+
+            // executing the script
+            executor.executeEsEhScript()
         }
     }
 }
