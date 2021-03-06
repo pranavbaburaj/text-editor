@@ -1,4 +1,8 @@
-# cody 
+# cody
+
+> This project is abandoned. However , don't hesitate to fork the repository and 
+> created your own :smile:
+
 you can try it out [here](https://simple-code-editor.netlify.app/)
 ### A simple online text-editor
 
